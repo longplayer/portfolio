@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@layer components {
+  .btn {
+    @apply py-2 px-4 rounded-lg bg-gray-100 text-gray-900 w-auto;
+  }
+  .btn-green {
+    @apply bg-green-900 text-white;
+  }
+}
