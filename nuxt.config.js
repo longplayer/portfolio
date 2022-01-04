@@ -10,21 +10,16 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    '~assets/css/tailwind.css',
-  ],
+  css: ['~assets/css/tailwind.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -36,9 +31,7 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    'nuxt-i18n',
-  ],
+  modules: ['nuxt-i18n'],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
@@ -48,14 +41,14 @@ export default {
       plugins: {
         // Disable a plugin by passing false as value
         'postcss-import': {},
-        'tailwindcss': path.resolve(__dirname, './tailwind.config.js'),
+        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
         'postcss-nested': {},
-        'autoprefixer': {}
+        autoprefixer: {},
       },
       preset: {
         stage: 1,
-      }
-    }
+      },
+    },
   },
 
   i18n: {
@@ -66,18 +59,18 @@ export default {
       messages: {
         en: {
           welcome: 'Welcome',
-          home: 'home'
+          home: 'home',
         },
         fr: {
           welcome: 'Bienvenue',
-          home: 'accueil'
-        }
-      }
-    }
+          home: 'accueil',
+        },
+      },
+    },
   },
 
   tailwindcss: {
     // jit: false,
     exposeConfig: true,
-  }
+  },
 }

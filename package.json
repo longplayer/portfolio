@@ -8,7 +8,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "reinstall": "rm package-lock.json && rm -r node_modules && npm install"
+    "reinstall": "rm package-lock.json && rm -r node_modules && npm install",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^4.0.3",
