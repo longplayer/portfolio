@@ -10,7 +10,8 @@
     "generate": "nuxt generate",
     "reinstall": "rm package-lock.json && rm -r node_modules && npm install",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "eaccess:fix": "./script/net-restart.bat"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^4.0.3",
