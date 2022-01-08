@@ -5,13 +5,14 @@
   "homepage": "https://github.com/longplayer/portfolio",
   "scripts": {
     "dev": "nuxt",
+    "dev:fix": "npm run eaccess:fix && npm run dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "reinstall": "rm package-lock.json && rm -r node_modules && npm install",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "eaccess:fix": "./script/net-restart.bat"
+    "eaccess:fix": "cd script && net-restart.bat"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^4.0.3",
@@ -20,8 +21,12 @@
     "eslint-plugin-prettier": "^3.1.4",
     "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.15.4",
+    "particles.vue": "^2.21.0",
     "path": "^0.12.7",
     "postcss": "^8.2.10",
     "prettier": "^2.1.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1"
   }
 }
