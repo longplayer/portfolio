@@ -1,48 +1,54 @@
 <template>
-  <div class="container mx-auto">
-    <Logo />
-    <h1 class="title text-6xl">Nuxt Boilerplate</h1>
-    <h2 class="text-center text-xl">
-      Nuxt starter pack with Tailwindcss and i18n
-    </h2>
-
-    <nav>
-      <ul>
-        <li>
-          <nuxt-link :to="localePath('index')">{{ $t('home') }}</nuxt-link>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="link-list">
-      <a href="https://nuxtjs.org/"
-        target="_blank" rel="noopener noreferrer"
-        class="btn"
-      >
-        Nuxt Documentation
-      </a>
-      <a href="https://github.com/nuxt/nuxt.js"
-        target="_blank" rel="noopener noreferrer"
-        class="btn btn-green"
-      >
-        GitHub
-      </a>
-    </div>
-
-    <h3 class="text-xl mb-4">My Blog</h3>
+  <div data-scroll-container id="home" class="main">
+    <section id="section-hero">
+      <the-hero />
+    </section>
+    <section-about />
+    <section-works />
+    <section-experience />
+    <section-contact />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      lsm: null
+    }
+  },
+  mounted () {
+    this.lsm = new this.locomotiveScroll({
+      el: document.querySelector('[data-scroll-container]'),
+      smooth: true
+    })
+    console.log('>lsm', this.lsm)
+  }
+}
 </script>
 
 <style lang="postcss">
-.title {
-  text-align: center;
+@import url("locomotive-scroll/dist/locomotive-scroll.css");
+
+.main > section {
+  @apply container mx-auto px-8 pb-8;
+
+  &#section-hero {
+    max-width: inherit;
+    @apply px-0;
+  }
+
+  article {
+
+    h2 {
+      @apply my-6;
+    }
+
+    li {
+      @apply mb-2;
+    }
+
+  }
 }
 
-.link-list {
-  @apply w-3/6 mx-auto bg-green-100 p-4;
-}
 </style>
