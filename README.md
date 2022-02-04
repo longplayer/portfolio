@@ -1,4 +1,6 @@
-# nuxt-i18n
+# Portfolio (v3)
+
+This is my portfolio as Frontend Developer and Graphic Designer
 
 ## Build Setup
 
