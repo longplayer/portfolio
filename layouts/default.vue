@@ -1,15 +1,33 @@
 <template>
-  <div class="app-container">
-    <header>
-      <TheMenu />
-    </header>
-    <Nuxt />
-    <the-footer />
-  </div>
+  <LocomotiveScroll 
+    ref="scroller" 
+    :getted-options="locomotiveConfig"
+  >
+    <div class="app-container">
+      <header data-scroll-section >
+        <TheMenu />
+      </header>
+      <Nuxt />
+      <the-footer data-scroll-section />
+    </div>
+  </LocomotiveScroll>
+
 </template>
 <script>
+const locomotiveBaseConfig = {
+  smooth: true,
+  direction: 'vertical',
+}
+
 export default {
-  scrollToTop: false
+  setup() {
+    const locomotiveConfig = {
+      ...locomotiveBaseConfig,
+      smartphone: locomotiveBaseConfig,
+      tablet: locomotiveBaseConfig,
+    }
+    return { locomotiveConfig }
+  }
 }
 </script>
 

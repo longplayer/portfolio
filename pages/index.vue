@@ -1,5 +1,5 @@
 <template>
-  <div data-scroll-container id="home" class="main">
+  <div data-scroll-section id="home" class="main">
     <section id="section-hero">
       <the-hero />
     </section>
@@ -11,44 +11,35 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      lsm: null
-    }
-  },
-  mounted () {
-    this.lsm = new this.locomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true
-    })
-    console.log('>lsm', this.lsm)
+  import { onMounted } from '@nuxtjs/composition-api'
+  import { useWindowScroll } from '@vueuse/core'
+
+  export default {
+    setup() {
+      const { x, y } = useWindowScroll()
+      onMounted(() => {})
+      return { x, y }
+    },
   }
-}
 </script>
 
 <style lang="postcss">
-@import url("locomotive-scroll/dist/locomotive-scroll.css");
+  .main > section {
+    @apply container mx-auto px-8 pb-8;
 
-.main > section {
-  @apply container mx-auto px-8 pb-8;
-
-  &#section-hero {
-    max-width: inherit;
-    @apply px-0;
-  }
-
-  article {
-
-    h2 {
-      @apply my-6;
+    &#section-hero {
+      max-width: inherit;
+      @apply px-0;
     }
 
-    li {
-      @apply mb-2;
+    article {
+      h2 {
+        @apply my-6;
+      }
+
+      li {
+        @apply mb-2;
+      }
     }
-
   }
-}
-
 </style>
