@@ -27,9 +27,6 @@
   
   position: relative;
   overflow: hidden;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   @apply w-full h-screen;
 
   > figure {
@@ -55,12 +52,16 @@
   > .intro {
     position: absolute;
     bottom: 0;
-    transform: translate(4rem, -8rem);
-    width: auto;
+    transform: translate(0, -40%);
+    width: 100%;
     height: auto;
     z-index: 2;
     overflow: hidden;
-    @apply text-gray-50;
+    @apply px-6 text-gray-50;
+    @screen md {
+      
+      transform: translate(0, -10%);
+    }
 
     .slide-text {
       position: relative;
