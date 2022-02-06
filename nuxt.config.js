@@ -18,12 +18,6 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Cabin&family=Oswald:wght@300;400;500&display=swap',
-      },
-    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -53,6 +47,8 @@ export default {
     '@nuxtjs/dotenv',
     '@vueuse/nuxt',
     '@nuxtjs/composition-api/module',
+    // https://github.com/nuxt-community/google-fonts-module
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -97,5 +93,18 @@ export default {
   tailwindcss: {
     // jit: false,
     exposeConfig: true,
+  },
+  // https://google-fonts.nuxtjs.org/options
+  googleFonts: {
+    display: 'swap', // 'auto' | 'block' | 'swap' | 'fallback' | 'optional'
+    text: 'Hello world',
+    families: {
+      Cabin: true,
+      Oswald: {
+        wght: [300, 400, 600],
+      },
+    },
+    download: true,
+    inject: true,
   },
 }
