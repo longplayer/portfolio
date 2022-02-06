@@ -10,8 +10,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "reinstall": "rm package-lock.json && rm -r node_modules && npm install",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "npx eslint . -o ./logs/tofix.log",
+    "lint:fix": "npx eslint . --fix",
     "eaccess:fix": "cd script && net-restart.bat"
   },
   "dependencies": {
