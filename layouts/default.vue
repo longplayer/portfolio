@@ -27,14 +27,9 @@ export default {
     position: relative;
 
     > header {
-      position: absolute;
+      position: fixed;
       z-index:4;
-      transform: translate(-2rem, 2rem);
-      @apply top-0 right-0;
-
-      > .navigation {
-        @apply container mx-auto p-6 bg-yellow-300;
-      }
+      @apply top-0 right-0 w-full h-auto;
     }
 
     > .main {
