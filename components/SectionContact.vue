@@ -2,7 +2,8 @@
   <section>
     <section-title
       title="Keep in touch" 
-      iconName="chat" 
+      iconName="chat"
+      id="contact"
     />
     <article>
       <p>Contact me for any question</p>

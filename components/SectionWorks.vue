@@ -3,6 +3,7 @@
     <section-title
       title="Some of my works"
       iconName="work"
+      id="works"
     />
     <article>
       <ul>

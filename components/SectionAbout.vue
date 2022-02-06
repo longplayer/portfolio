@@ -3,6 +3,7 @@
     <section-title
       title="About me"
       iconName="person"
+      id="about"
     />
     <article
         id="portrait"
