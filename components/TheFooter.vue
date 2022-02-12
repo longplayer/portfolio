@@ -4,7 +4,7 @@
       <ul>
         <li v-for="(link, id) in links" :key="id">
           <a :href="link.url" :title="link.title" target="blank" rel="noopener noreferrer">
-            <base-icon :name="link.name" :icon-marge="0" />
+            <base-icon :name="link.name" icon-marge="0" />
           </a>
         </li>
       </ul>
