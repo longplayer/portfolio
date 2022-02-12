@@ -1,30 +1,51 @@
 <template>
   <nav class="navigation" :class="{'navigation--open': isMenuOpen}">
     <div class="navigation__floater">
-      <nuxt-link :class="'logo__link'" :to="{ page: 'index' }">
+      <button :class="'logo__link'" @click="scrollToTarget('top')">
         <the-logo class="logo__image" defaultTheme="light"/>
-      </nuxt-link>
+      </button>
       <div class="navigation__trigger">
         <label>
-          <input type="checkbox" class="toggler" @click="doToggleMenu($event)">
+          <input ref="togglerInput" type="checkbox" class="toggler" @click="updateToggleStatus($event)">
           <div class="hamburger"><div></div></div>
         </label>
       </div>
+      <!--
+      <nuxt-link :class="'logo__link'" :to="{path: '/'}">
+        <the-logo class="logo__image" defaultTheme="light"/>
+      </nuxt-link>
+      -->
     </div>
-    <ul v-if="isMenuOpen" class="navigation__list nav-visible">
-      <li class="navigation__item">
-        <nuxt-link :class="'navigation__link'" :to="{ page: 'index', hash: '#about'}">About Me</nuxt-link>
-      </li>
-      <li class="navigation__item">
-        <nuxt-link :class="'navigation__link'" :to="{ page: 'index', hash: '#works'}">Works</nuxt-link>
-      </li>
-      <li class="navigation__item">
-        <nuxt-link :class="'navigation__link'" :to="{ page: 'index', hash: '#experience'}">Experience</nuxt-link>
-      </li>
-      <li class="navigation__item">
-        <nuxt-link :class="'navigation__link'" :to="{ page: 'index', hash: '#contact'}">Hire Me</nuxt-link>
-      </li>
-    </ul>
+    <div class="navigation__fixer nav-visible">
+      <ul v-if="isMenuOpen" class="navigation__list">
+        <li class="navigation__item">
+          <button :class="'navigation__link'" @click="scrollToTarget('#about')">About Me</button>
+        </li>
+        <li class="navigation__item">
+          <button :class="'navigation__link'" @click="scrollToTarget('#works')">Works</button>
+        </li>
+        <li class="navigation__item">
+          <button :class="'navigation__link'" @click="scrollToTarget('#experience')">Experience</button>
+        </li>
+        <li class="navigation__item">
+          <button :class="'navigation__link'" @click="scrollToTarget('#contact')">Hire Me</button>
+        </li>
+        <!--
+        <li class="navigation__item">
+          <nuxt-link :class="'navigation__link'" :to="{path: '/', hash: 'about'}">About Me</nuxt-link>
+        </li>
+        <li class="navigation__item">
+          <nuxt-link :class="'navigation__link'" :to="{path: '/', hash: 'works'}">Works</nuxt-link>
+        </li>
+        <li class="navigation__item">
+          <nuxt-link :class="'navigation__link'" :to="{path: '/', hash: 'experience'}">Experience</nuxt-link>
+        </li>
+        <li class="navigation__item">
+          <nuxt-link :class="'navigation__link'" :to="{path: '/', hash: 'contact'}">Hire Me</nuxt-link>
+        </li>
+        -->
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -32,14 +53,57 @@
 export default {
   data () {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+    }
+  },
+  props: {
+    ls: {
+      type: Object,
+      required: false,
     }
   },
   methods: {
-    doToggleMenu: function (event) {
+    updateToggleStatus: function (event) {
       this.isMenuOpen = event.target.checked
+    },
+    setToggleStatusTo: function(value) {
+      this.isMenuOpen = value
+      this.$refs.togglerInput.checked = value
+    },
+    updateHistory: function(isHash, selector) {
+      if (isHash) {
+        this.$router.push({path: '/', hash: selector})
+      } else {
+        this.$router.push({path: '/'})
+      }
+    },
+    scrollToTarget: function (targetSelector) {
+
+      // locomtive scroll allow keyword value as targets
+      // https://openbase.com/js/locomotive-scroll/documentation#instance-methods
+      const isHashTarget = targetSelector.slice(0, 1) === '#'
+
+      if(isHashTarget && this.$route.hash === targetSelector) return
+
+      const scroll = this.ls // locomotiveScroll instance sent from parent
+      const target = isHashTarget ? document.querySelector(targetSelector) : targetSelector
+
+      // console.log('scroll to target: ', target)
+
+      scroll.scrollTo(target) // allowed values: string, dom node, int
+      scroll.update()
+
+      this.setToggleStatusTo(false)
+      this.updateHistory(isHashTarget, targetSelector)
     }
-  }
+  },
+
+  // lifecycle hooks
+  mounted() {
+    this.$nextTick(function() {})
+  },
+  created() {},
+  updated() {},
 }
 </script>
 
@@ -71,12 +135,16 @@ export default {
       }
     }
   }
-  
+
   &__trigger {
     display: block;
     position: relative;
     /* background-color: burlywood; */
     @apply w-full h-16 mx-auto my-4;
+  }
+
+  &__fixer {
+
   }
 
   &__list {
@@ -131,7 +199,7 @@ export default {
           width: 100%;
           transition: all  0.4s ease;
 
-          /* CREATING THE TOP AND BOTTOM LINES : 
+          /* CREATING THE TOP AND BOTTOM LINES :
           TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
           &::before,
           &::after{
@@ -159,12 +227,20 @@ export default {
 
   &--open {
 
-    &__floater {
+    &__floater {}
+    .navigation__fixer {
+      position: relative;
+      height: 100vh;
+      width: 60%;
+      background-color: antiquewhite;
+      @apply flex;
 
+      .navigation__list {
+        @apply m-auto;
+      }
     }
 
     /* background-color: springgreen; */
-    .navigation__list {}
     .hamburger {
       transform: scale(.2);
       opacity: 0;
