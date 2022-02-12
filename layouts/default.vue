@@ -1,11 +1,14 @@
 <template>
-  <LocomotiveScroll 
-    ref="scroller" 
+  <LocomotiveScroll
+    ref="scroller"
     :getted-options="locomotiveConfig"
+    @init="onScrollinit"
+    @scroll="onScroll"
+    @scrollend="onScrollEnd"
   >
     <div class="app-container">
-      <header data-scroll-section >
-        <TheMenu />
+      <header>
+        <TheMenu :ls="locomotive"/>
       </header>
       <Nuxt />
       <the-footer data-scroll-section />
@@ -14,6 +17,8 @@
 
 </template>
 <script>
+import { onMounted, ref } from '@nuxtjs/composition-api'
+
 const locomotiveBaseConfig = {
   smooth: true,
   direction: 'vertical',
@@ -21,12 +26,39 @@ const locomotiveBaseConfig = {
 
 export default {
   setup() {
+    const scroller = ref(null)
+    const locomotive = ref(null)
     const locomotiveConfig = {
       ...locomotiveBaseConfig,
       smartphone: locomotiveBaseConfig,
       tablet: locomotiveBaseConfig,
     }
-    return { locomotiveConfig }
+
+    function onScrollinit () {
+      // console.log('>>scroll init')
+    }
+
+    function onScroll () {
+      // console.log('>>scrolling...')
+    }
+
+    function onScrollEnd () {
+      console.log('>>scroll ended')
+    }
+
+    onMounted(() => {
+      // console.log('>> MOUNTED', scroller.value.locomotive)
+      locomotive.value = scroller.value.locomotive
+    })
+
+    return {
+      locomotiveConfig,
+      locomotive,
+      scroller,
+      onScroll,
+      onScrollinit,
+      onScrollEnd,
+    }
   }
 }
 </script>
