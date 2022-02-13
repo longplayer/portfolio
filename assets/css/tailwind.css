@@ -78,6 +78,9 @@
 }
 
 @layer components {
+  .c-scrollbar {
+    z-index: 10;
+  }
 }
 
 @layer utilities {
