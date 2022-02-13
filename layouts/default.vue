@@ -8,7 +8,9 @@
   >
     <div class="app-container">
       <header>
-        <TheMenu :ls="locomotive"/>
+        <TheMenu
+          :ls="locomotive"
+          :is-sticky="isSticky" />
       </header>
       <Nuxt />
       <the-footer data-scroll-section />
@@ -26,6 +28,7 @@ const locomotiveBaseConfig = {
 
 export default {
   setup() {
+    const isSticky = ref(false)
     const scroller = ref(null)
     const locomotive = ref(null)
     const locomotiveConfig = {
@@ -43,12 +46,34 @@ export default {
     }
 
     function onScrollEnd () {
-      console.log('>>scroll ended')
+      // console.log('>>scroll ended')
+    }
+
+    function initStickyHandler(position, ls) {
+      const el = ls.el
+      const triggerY = (ls.scroll.windowHeight / 100) * 25
+      const classValue = 'sticky-menu'
+
+      if (position.scroll.y < triggerY) {
+        if(el.classList.contains(classValue)) {
+          el.classList.remove(classValue)
+          // console.log('>remove class', classValue)
+        }
+      } else {
+        if(!el.classList.contains(classValue)) {
+          el.classList.add(classValue)
+          // console.log('>add class', classValue)
+        }
+      }
     }
 
     onMounted(() => {
-      // console.log('>> MOUNTED', scroller.value.locomotive)
+      // console.log('>> MOUNTED', isSticky.value)
       locomotive.value = scroller.value.locomotive
+      locomotive.value.on('scroll', (position) => {
+        initStickyHandler(position, locomotive.value) //add class for sticy menu behavior
+        isSticky.value = locomotive.value.el.classList.contains('sticky-menu')
+      })
     })
 
     return {
@@ -58,6 +83,7 @@ export default {
       onScroll,
       onScrollinit,
       onScrollEnd,
+      isSticky,
     }
   }
 }
