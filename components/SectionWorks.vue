@@ -12,11 +12,26 @@
             <span>Websites</span>
           </h2>
           <ul>
-            <li>Masterpiece Fair London</li>
-            <li>Art Miami</li>
-            <li>Art Wynwood</li>
-            <li>Art of Miguel Fernandez</li>
-            <li>Catherine Hunter</li>
+            <li>
+              Masterpiece Fair London
+              <br><span>Frontend</span>
+            </li>
+            <li>
+              Art Miami
+              <br><span>Frontend</span>
+            </li>
+            <li>
+              Art Wynwood
+              <br><span>Frontend</span>
+            </li>
+            <li>
+              Art of Miguel Fernandez
+              <br><span>Frontend / backend</span>
+            </li>
+            <li>
+              Catherine Hunter
+              <br><span>Frontend / backend</span>
+            </li>
           </ul>
         </li>
         <li class="group" tabindex="0">
@@ -25,9 +40,9 @@
           </h2>
           <ul>
             <li>Art Fairs Floorplan redesign</li>
-            <li>ArtCity app</li>
-            <li>Mitchells' website</li>
-            <li>88 Gallery's website</li>
+            <li>ArtCity design</li>
+            <li>Website: John Mitchells</li>
+            <li>Website: 88 Gallery</li>
           </ul>
         </li>
         <li class="group" tabindex="0">

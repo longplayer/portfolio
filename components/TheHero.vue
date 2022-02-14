@@ -14,7 +14,7 @@
         <hr />
         <div class="bottom">
           <div class="bottom--inner">
-            <p>I am a frontend developer who creates websites.</p>
+            <p>The guy who makes websites, and other things.</p>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 
 <style lang="postcss" scoped>
 .hero {
-  
+
   position: relative;
   overflow: hidden;
   @apply w-full h-screen;
@@ -59,7 +59,7 @@
     overflow: hidden;
     @apply px-6 text-gray-50;
     @screen md {
-      
+
       transform: translate(0, -10%);
     }
 

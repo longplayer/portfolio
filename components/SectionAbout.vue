@@ -8,7 +8,7 @@
     <article
         id="portrait"
       >
-      <p>Always seeking new challenges in web technology, I have been working and being passionate about the web for the past ten years. More skilled in frontend development, I have some experience on the backend side as well. Here is some last technology I used javascript, vuejs, nuxt, tailwindcss, node-js.</p>
+      <p>My name is Pablo. I'm a web developper always looking for new challenges. I've been making websites for about ten years, and I'm still passionate about it.  I love frontend, but I have also experience in backend. These are some technologies I love: javascript, vuejs, nuxt, tailwindcss, node-js.</p>
       <figure>
         <img :src="require('~/assets/img/lp-photo.png')" alt="Pablo portrait"></figure>
     </article>
