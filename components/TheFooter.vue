@@ -43,8 +43,7 @@ export default {
 <style lang="postcss" scoped>
 footer {
 
-  background-color: var(--blue-dark);
-  @apply flex justify-center content-center;
+  @apply flex justify-center content-center bg-primary;
 
   .separator {
     position: absolute;
@@ -55,10 +54,10 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--blue-dark);
     z-index: 0;
     transform: skewY(-5deg);
     transform-origin: top left;
+    @apply bg-primary;
   }
 
   .footer--inner {

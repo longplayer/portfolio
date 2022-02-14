@@ -64,7 +64,7 @@ header {
       width: 40%;
       height: .25rem;
       margin: 0 auto 0 0;
-      @apply bg-yellow-300;
+      @apply bg-secondary;
     }
   }
 

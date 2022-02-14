@@ -196,7 +196,7 @@ export default {
       inset: 0 0 0 0;
       z-index: -1;
       transition: transform .3s ease;
-      @apply bg-yellow-300;
+      @apply bg-secondary;
     }
 
     position: relative;
@@ -308,8 +308,7 @@ export default {
     .navigation__floater {
       display: flex;
       transform: translate(0, 0);
-      background-color: var(--blue-dark);
-      @apply right-0 w-full h-16;
+      @apply bg-primary right-0 w-full h-16;
       @screen lg {
         width: inherit;
         display: inherit;

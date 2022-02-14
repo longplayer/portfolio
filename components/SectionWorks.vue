@@ -83,7 +83,7 @@ ul {
         height: 100%;
         transform: translate(-98% ,90%);
         transition: transform 250ms ease-in;
-        @apply bg-yellow-300;
+        @apply bg-secondary;
       }
 
       &.active::after {

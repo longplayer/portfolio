@@ -1,16 +1,16 @@
 <template>
   <section>
     <section-title
-      title="Keep in touch" 
+      title="Keep in touch"
       iconName="chat"
       id="contact"
     />
     <article>
       <p>Contact me for any question</p>
       <button
-        type="button" 
-        class="button" 
-        @mousemove="trackMouse" 
+        type="button"
+        class="button"
+        @mousemove="trackMouse"
         @click.prevent="sendMail">
         Hire me
       </button>
@@ -58,7 +58,6 @@
     overflow: hidden;
     padding: 1rem 3rem;
     box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
-    background: var(--blue-dark);
     color: #fff;
     font-size: 1rem;
     line-height: 1.25;
@@ -66,6 +65,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: background-color 0.6s ease;
+    @apply bg-primary;
 
     &:after {
       content: '';
@@ -84,7 +84,7 @@
     }
     &:focus,
     &:hover {
-      background: var(--blue-darker);
+      @apply bg-primary-800;
     }
     &:active {
       &:after {

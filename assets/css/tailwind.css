@@ -3,8 +3,8 @@
 @import 'tailwindcss/utilities';
 
 :root {
-  --blue-dark: #000321;
-  --blue-darker: hsl(235, 100%, 3%);
+  --color-primary: #00031f;
+  --color-secondary: #ffb700;
 }
 
 @layer base {
