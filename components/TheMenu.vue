@@ -107,7 +107,7 @@ export default {
       locoScroll.scrollTo(target) // allowed values: string, dom node, int
       locoScroll.update()
 
-      console.log(this.isSticky)
+      // console.log(this.isSticky)
       this.setToggleStatusTo(false)
       this.updateHistory(isHashTarget, targetSelector)
     }
@@ -116,7 +116,6 @@ export default {
   // lifecycle hooks
   mounted() {
     this.$nextTick(function() {})
-    console.log(this.isSticky)
   },
   created() {},
   updated() {},

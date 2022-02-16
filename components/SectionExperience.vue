@@ -152,17 +152,17 @@ export default {
 
     function activateGroup (id) {
       // activeIndex.value = id
-      console.log('>> Active index: ', id, activeIndex.value)
+      // console.log('>> Active index: ', id, activeIndex.value)
     }
     function getActiveStatus(status) {
-      console.log('>> GetActiveIndex', status, activeIndex.value, (status === activeIndex.value))
+      // console.log('>> GetActiveIndex', status, activeIndex.value, (status === activeIndex.value))
       // return status === activeIndex.value
     }
     function onSectionInOut(event) {
       const type = event.type.toLowerCase()
       const targetTag = event.target.tagName.toLowerCase()
 
-      console.log(event.target, type, targetTag)
+      // console.log(event.target, type, targetTag)
 
       // Ignore other targets
       if (targetTag === 'li') {
