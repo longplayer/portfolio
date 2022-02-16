@@ -1,7 +1,7 @@
 <template>
   <button
     class="slide--item"
-    :style="`background-image: url(${image})`">
+    :style="`background-image: url(${imageData})`">
     <div class="slide--inner">
       <h3 class="slide--title">{{ title }}</h3>
       <p class="slide--description">{{ description }}</p>
@@ -10,11 +10,15 @@
 </template>
 
 <script>
+import { computed } from '@nuxtjs/composition-api'
+
+const DEFAULT_IMAGE = 'https://picsum.photos/400?random=10'
+
 export default {
   props: {
     image: {
       type: String,
-      default: 'https://picsum.photos/400?random=10'
+      default: DEFAULT_IMAGE,
     },
     title: {
       type: String,
@@ -24,6 +28,19 @@ export default {
       type: String,
       required: true
     },
+  },
+  setup(props) {
+    const imageData = computed(() => validateImageData(props.image))
+
+    function validateImageData(data) {
+      const isValid = (d) => typeof d === 'string' && d.length > 0
+      if (isValid(data)) return data
+      return DEFAULT_IMAGE
+    }
+
+    return {
+      imageData,
+    }
   }
 
 }
