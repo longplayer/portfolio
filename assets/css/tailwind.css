@@ -84,4 +84,7 @@
 }
 
 @layer utilities {
+  .no-native-focus {
+    outline: none;
+  }
 }

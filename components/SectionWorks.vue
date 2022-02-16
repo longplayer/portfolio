@@ -7,67 +7,139 @@
     />
     <article>
       <ul>
-        <li class="group" tabindex="0">
-          <h2>
-            <span>Websites</span>
-          </h2>
+        <!-- @focusin="activateGroup(indexA)"
+        @mouseover="activateGroup(indexA)"
+        @mouseleave="activateGroup(-1)" -->
+        <li
+          class="group no-native-focus"
+          tabindex="0"
+          v-for="(data, indexA) in sectionData.content"
+          :key="indexA"
+        >
+        <!-- <section-title-animated :is-active="getActiveStatus(indexA)"> -->
+        <section-title-animated >
+            {{ data.name }}
+          </section-title-animated>
           <ul>
-            <li>
-              Masterpiece Fair London
-              <br><span>Frontend</span>
+            <li
+              v-for="(item, indexB) in data.items"
+              :key="indexB"
+            >
+              {{ item.title }}
+              <template v-if="item.description">
+                <br>{{ item.description }}
+              </template>
             </li>
-            <li>
-              Art Miami
-              <br><span>Frontend</span>
-            </li>
-            <li>
-              Art Wynwood
-              <br><span>Frontend</span>
-            </li>
-            <li>
-              Art of Miguel Fernandez
-              <br><span>Frontend / backend</span>
-            </li>
-            <li>
-              Catherine Hunter
-              <br><span>Frontend / backend</span>
-            </li>
-          </ul>
-        </li>
-        <li class="group" tabindex="0">
-          <h2>
-            <span>UI / UX</span>
-          </h2>
-          <ul>
-            <li>Art Fairs Floorplan redesign</li>
-            <li>ArtCity design</li>
-            <li>Website: John Mitchells</li>
-            <li>Website: 88 Gallery</li>
-          </ul>
-        </li>
-        <li class="group" tabindex="0">
-          <h2>
-            <span>Branding</span>
-          </h2>
-          <ul>
-            <li>Madame Moustache</li>
-            <li>Isler</li>
-          </ul>
-        </li>
-        <li class="group" tabindex="0">
-          <h2>
-            <span>Print</span>
-          </h2>
-          <ul>
-            <li>AS Documentayion</li>
-            <li>MasterArt Directory 2013 to 2017</li>
           </ul>
         </li>
       </ul>
-
     </article>
   </section>
 </template>
+
+<script>
+import { ref } from '@nuxtjs/composition-api'
+export default {
+  setup(){
+
+    const activeIndex = ref(-1)
+    const sectionData = {
+      title: {
+        text: 'Some of my works',
+        icon: 'work',
+        id: 'work'
+      },
+      content: [
+        {
+          name: 'websites',
+          items: [
+            {
+              title: 'Masterpiece Fair London',
+              description: 'Frontend',
+            },
+            {
+              title: 'Art Miami websites',
+              description: 'Frontend',
+            },
+            {
+              title: 'Art of Miguel Fernandez',
+              description: 'Frontend / Backend',
+            },
+            {
+              title: 'Catherine Hunter',
+              description: 'Frontend / Backend',
+            },
+          ]
+        },
+        {
+          name: 'UI / UX',
+          items: [
+            {
+              title: 'Art Fairs Floorplan Redesign',
+              description: '',
+            },
+            {
+              title: 'ArtCity design',
+              description: '',
+            },
+            {
+              title: 'Website: John Mitchells',
+              description: '',
+            },
+            {
+              title: 'Website: 88 Gallery',
+              description: '',
+            },
+          ]
+        },
+        {
+          name: 'Branding',
+          items: [
+            {
+              title: 'Madame Moustache',
+              description: '',
+            },
+            {
+              title: 'Isler',
+              description: '',
+            },
+          ]
+        },
+        {
+          name: 'Print',
+          items: [
+            {
+              title: 'Corporate Documentation',
+              description: '',
+            },
+            {
+              title: 'MasterArt\'s Directory, Edition 2013 to 2017',
+              description: '',
+            },
+          ]
+        },
+      ]
+    }
+
+    function activateGroup (id) {
+      activeIndex.value = id
+      // console.log('>> Active index: ', id, activeIndex.value)
+    }
+    function getActiveStatus(status) {
+      // console.log('>> GetActiveIndex', status, activeIndex.value)
+      return status === activeIndex.value
+    }
+
+
+    return {
+      sectionData,
+      activateGroup,
+      getActiveStatus,
+      activeIndex,
+    }
+  }
+}
+</script>
 
 <style lang="postcss" scoped>
 ul {
@@ -77,33 +149,6 @@ ul {
     @apply outline-none mb-8;
     &:last-child {
       margin-bottom: 0;
-    }
-
-    h2 {
-      @apply relative mt-0 mb-8  py-8 overflow-hidden;
-
-      span {
-        z-index: 2;
-        @apply relative;
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        transform: translate(-98% ,90%);
-        transition: transform 250ms ease-in;
-        @apply bg-secondary;
-      }
-
-      &.active::after {
-        transform: translate(0 ,0);
-      }
     }
 
     &:hover h2::after,
