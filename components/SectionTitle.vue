@@ -40,7 +40,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  @apply bg-white md:relative;
+  @apply bg-transparent md:relative;
 
   > h1 {
     flex: 1 1 80%;
@@ -68,7 +68,7 @@ header {
     }
   }
 
-  @media screen(md) {
+  @media screen(lg) {
     > h1 {
       flex: 0 1 auto;
       @apply ml-auto my-24;
@@ -104,6 +104,7 @@ header {
   .ico--circular {
     border-width: 4px;
     border-radius: 3rem;
+    flex: 0 0 6rem;
     @apply w-24 h-24;
   }
 }

@@ -25,7 +25,7 @@
 
 <style lang="postcss">
   .main > section {
-    @apply container mx-auto px-8 pb-8;
+    @apply container mx-auto px-16 pb-8 lg:px-24;
 
     &#section-hero {
       max-width: inherit;
