@@ -1,9 +1,9 @@
 <template>
   <section>
     <section-title
-      title="Some of my works"
-      iconName="work"
-      id="works"
+      :title="sectionData.title.text"
+      :iconName="sectionData.title.icon"
+      :id="sectionData.title.id"
     />
     <article>
       <ul>
@@ -16,8 +16,8 @@
           v-for="(data, indexA) in sectionData.content"
           :key="indexA"
         >
-        <!-- <section-title-animated :is-active="getActiveStatus(indexA)"> -->
-        <section-title-animated >
+          <!-- <section-title-animated :is-active="getActiveStatus(indexA)"> -->
+          <section-title-animated >
             {{ data.name }}
           </section-title-animated>
           <ul>
@@ -25,9 +25,11 @@
               v-for="(item, indexB) in data.items"
               :key="indexB"
             >
-              {{ item.title }}
+              <span class="title">{{ item.title }}</span>
               <template v-if="item.description">
-                <br>{{ item.description }}
+                <br><span class="description">
+                  {{ item.description }}
+                </span>
               </template>
             </li>
           </ul>
@@ -155,6 +157,15 @@ ul {
     &:focus h2::after {
       transform: translate(0 ,0);
     }
+
+    .title {
+      line-height: 1.25rem;
+    }
+    .description {
+      font-size: 1rem;
+      line-height: 1.25rem;
+      font-style: italic;
+    }
   }
 }
 
@@ -167,6 +178,11 @@ ul {
     grid-template-rows: repeat(2, auto);
     grid-gap: 16px;
     align-content: start;
+
+    li {
+      line-height: 1.75rem;
+      margin-bottom: 1rem;
+    }
   }
   h2::after {
     transform: translate(-99.2% ,90%);
